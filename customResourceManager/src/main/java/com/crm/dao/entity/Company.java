@@ -15,7 +15,7 @@ public class Company implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-      private Integer id;
+    private Integer id;
 
     private String companyId;
 
@@ -108,16 +108,6 @@ public class Company implements Serializable {
 
     @Override
     public String toString() {
-        return "Company{" +
-        "id=" + id +
-        ", companyId=" + companyId +
-        ", companyName=" + companyName +
-        ", address=" + address +
-        ", state=" + state +
-        ", createdBy=" + createdBy +
-        ", createdTime=" + createdTime +
-        ", updatedTime=" + updatedTime +
-        ", updatedBy=" + updatedBy +
-        "}";
+        return "Company{" + "id=" + id + ", companyId=" + companyId + ", companyName=" + companyName + ", address=" + address + ", state=" + state + ", createdBy=" + createdBy + ", createdTime=" + createdTime + ", updatedTime=" + updatedTime + ", updatedBy=" + updatedBy + "}";
     }
 }

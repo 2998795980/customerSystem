@@ -15,8 +15,6 @@ public class MySQLTest {
 
     @Autowired
     PersonMapper personMapper;
-    @Autowired
-    DataSource dataSource;
 
 
     @Test
@@ -25,11 +23,5 @@ public class MySQLTest {
         System.out.println(aLong);
     }
 
-    @Test
-    public void getConnection() throws SQLException {
-        System.out.println(dataSource);
-        Connection connection = dataSource.getConnection();
-        System.out.println(connection);
-    }
 
 }

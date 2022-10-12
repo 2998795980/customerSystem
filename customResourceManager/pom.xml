@@ -6,12 +6,15 @@
 
     <groupId>org.example</groupId>
     <artifactId>customResourceManager</artifactId>
+    <packaging>pom</packaging>
     <version>1.0-SNAPSHOT</version>
+
 
     <properties>
         <maven.compiler.source>11</maven.compiler.source>
         <maven.compiler.target>11</maven.compiler.target>
     </properties>
+
 
     <parent>
         <groupId>org.springframework.boot</groupId>
@@ -20,36 +23,49 @@
     </parent>
 
     <dependencies>
+        <!-- web stater      -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
             <version>2.7.4</version>
         </dependency>
-
+        <!--test stater-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
             <version>2.7.4</version>
         </dependency>
-<!--todo 没有定义好数据库 暂不开启 底层代码 -->
-<!--        &lt;!&ndash;mybatis plus 依赖&ndash;&gt;-->
-<!--        <dependency>-->
-<!--            <groupId>com.baomidou</groupId>-->
-<!--            <artifactId>mybatis-plus-boot-starter</artifactId>-->
-<!--            <version>3.5.2</version>-->
-<!--        </dependency>-->
-<!--        &lt;!&ndash;  MyBatis Plus  代码生成器    &ndash;&gt;-->
-<!--        <dependency>-->
-<!--            <groupId>com.baomidou</groupId>-->
-<!--            <artifactId>mybatis-plus-generator</artifactId>-->
-<!--            <version>3.5.3</version>-->
-<!--        </dependency>-->
-<!--        &lt;!&ndash;数据库连接依赖&ndash;&gt;-->
-<!--        <dependency>-->
-<!--            <groupId>mysql</groupId>-->
-<!--            <artifactId>mysql-connector-java</artifactId>-->
-<!--            <version>8.0.30</version>-->
-<!--        </dependency>-->
+
+        <!--mybatis-plus stater-->
+        <dependency>
+            <groupId>com.baomidou</groupId>
+            <artifactId>mybatis-plus-boot-starter</artifactId>
+            <version>3.5.2</version>
+        </dependency>
+        <!--mybatis-plus-generate-->
+        <dependency>
+            <groupId>com.baomidou</groupId>
+            <artifactId>mybatis-plus-generator</artifactId>
+            <version>3.5.2</version>
+        </dependency>
+        <!--velocity引擎-->
+        <dependency>
+            <groupId>org.apache.velocity</groupId>
+            <artifactId>velocity-engine-core</artifactId>
+            <version>2.0</version>
+        </dependency>
+        <!--mysql驱动-->
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>8.0.30</version>
+        </dependency>
+        <!--druid stater-->
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>druid-spring-boot-starter</artifactId>
+            <version>1.2.11</version>
+        </dependency>
     </dependencies>
 
 </project>

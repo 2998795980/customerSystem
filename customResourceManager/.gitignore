@@ -1,0 +1,12 @@
+# 忽略.idea文件夹
+
+.idea/
+
+# 忽略输出目录
+
+target/
+out/
+
+# 忽略idea生成的文件
+
+*.iml

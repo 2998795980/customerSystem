@@ -6,7 +6,14 @@ spring:
     password: root
     driver-class-name: com.mysql.cj.jdbc.Driver
 
+    druid:
+      url: jdbc:mysql://localhost:3306/custom_resource_manager?serverTimezone=UTC
+      username: root
+      password: root
+      driver-class-name: com.mysql.cj.jdbc.Driver
+
 # mybatis-plus
 mybatis-plus:
   type-aliases-package: com.crm.dao.entity
+
 

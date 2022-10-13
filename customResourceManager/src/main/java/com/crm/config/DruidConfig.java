@@ -1,7 +1,6 @@
 package com.crm.config;
 
 import com.alibaba.druid.pool.DruidDataSource;
-import com.mysql.cj.jdbc.Driver;
 import org.springframework.boot.SpringBootConfiguration;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Bean;
@@ -13,7 +12,7 @@ import javax.sql.DataSource;
 public class DruidConfig {
 
     @Bean()
-    @ConfigurationProperties(prefix = "spring.datasource")
+    @ConfigurationProperties(prefix = "spring.datasource.druid")
     public DataSource dataSource() {
         return new DruidDataSource();
     }

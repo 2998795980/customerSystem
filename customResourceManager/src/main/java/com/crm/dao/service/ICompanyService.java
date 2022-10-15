@@ -1,7 +1,9 @@
 package com.crm.dao.service;
 
-import com.crm.dao.entity.Company;
+import java.util.List;
+
 import com.baomidou.mybatisplus.extension.service.IService;
+import com.crm.dao.entity.Company;
 
 /**
  * <p>
@@ -13,4 +15,17 @@ import com.baomidou.mybatisplus.extension.service.IService;
  */
 public interface ICompanyService extends IService<Company> {
 
+    /**
+     * 查询全部公司
+     * 
+     * @return
+     */
+    List<Company> findAll();
+
+    /**
+     * 创建客户公司
+     * 
+     * @param company
+     */
+    void create(Company company);
 }

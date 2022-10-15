@@ -3,6 +3,9 @@ package com.crm.dao.entity;
 import java.io.Serializable;
 import java.time.LocalDateTime;
 
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableId;
+
 /**
  * <p>
  * 客户公司表
@@ -15,6 +18,8 @@ public class Company implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
+    // 设置id自增
+    @TableId(type = IdType.AUTO)
     private Integer id;
 
     private String companyId;
@@ -32,7 +37,6 @@ public class Company implements Serializable {
     private LocalDateTime updatedTime;
 
     private Integer updatedBy;
-
 
     public Integer getId() {
         return id;
@@ -108,6 +112,8 @@ public class Company implements Serializable {
 
     @Override
     public String toString() {
-        return "Company{" + "id=" + id + ", companyId=" + companyId + ", companyName=" + companyName + ", address=" + address + ", state=" + state + ", createdBy=" + createdBy + ", createdTime=" + createdTime + ", updatedTime=" + updatedTime + ", updatedBy=" + updatedBy + "}";
+        return "Company{" + "id=" + id + ", companyId=" + companyId + ", companyName=" + companyName + ", address="
+            + address + ", state=" + state + ", createdBy=" + createdBy + ", createdTime=" + createdTime
+            + ", updatedTime=" + updatedTime + ", updatedBy=" + updatedBy + "}";
     }
 }

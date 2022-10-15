@@ -1,7 +1,9 @@
 package com.crm.dao.entity;
 
+import cn.hutool.crypto.digest.DigestUtil;
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
+
 import java.io.Serializable;
 import java.time.LocalDateTime;
 
@@ -41,7 +43,7 @@ public class Account implements Serializable {
     private String email;
 
     /**
-     * 状态
+     * 状态 -1 删除 0 禁用 1 可用
      */
     private Integer state;
 
@@ -83,7 +85,7 @@ public class Account implements Serializable {
     }
 
     public void setPassword(String password) {
-        this.password = password;
+        this.password = DigestUtil.sha1Hex(password);
     }
 
     public String getEmail() {
@@ -148,5 +150,39 @@ public class Account implements Serializable {
         ", updatedBy=" + updatedBy +
         ", updatedTime=" + updatedTime +
         "}";
+    }
+
+    public Account() {
+    }
+
+    public Account(Integer id, String username, String account, String password, String email, Integer state, LocalDateTime createdTime, Integer createdBy, Integer updatedBy, LocalDateTime updatedTime) {
+        this.id = id;
+        this.username = username;
+        this.account = account;
+        this.password = password;
+        this.email = email;
+        this.state = state;
+        this.createdTime = createdTime;
+        this.createdBy = createdBy;
+        this.updatedBy = updatedBy;
+        this.updatedTime = updatedTime;
+    }
+
+    public Account(String username, String account, String password, String email, Integer state, LocalDateTime createdTime) {
+        this.username = username;
+        this.account = account;
+        this.password = password;
+        this.email = email;
+        this.state = state;
+        this.createdTime = createdTime;
+    }
+
+    public Account(String account, String password) {
+        this.account = account;
+        this.password = password;
+    }
+
+    public Account(LocalDateTime updatedTime) {
+        this.updatedTime = updatedTime;
     }
 }

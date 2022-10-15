@@ -13,22 +13,12 @@ public class RegisterService {
     @Autowired
     AccountMapper accountMapper;
 
-    /**
-     * 加密 密码
-     * @param account 用户信息
-     */
-    public void digester(Account account) {
-        // 加密
-        account.setPassword(DigestUtil.sha1Hex(account.getPassword()));
-
-    }
 
     /**
      * 插入一个用户
      * @param account 用户信息
      */
     public void insertAccount(Account account){
-        digester(account);
         accountMapper.insert(account);
     }
 
@@ -39,7 +29,8 @@ public class RegisterService {
      */
     public boolean searchUsername(String username) {
         QueryWrapper<Account> wrapper = new QueryWrapper<>();
-        wrapper.eq("username",username);
+        wrapper.eq("username",username)
+                .ne("state",-1);
         Long aLong = accountMapper.selectCount(wrapper);
         return aLong <= 0;
     }
@@ -51,7 +42,8 @@ public class RegisterService {
      */
     public boolean searchAccount(String account) {
         QueryWrapper<Account> wrapper = new QueryWrapper<>();
-        wrapper.eq("account",account);
+        wrapper.eq("account",account)
+                .ne("state",-1);
         Long aLong = accountMapper.selectCount(wrapper);
         return aLong <= 0;
     }

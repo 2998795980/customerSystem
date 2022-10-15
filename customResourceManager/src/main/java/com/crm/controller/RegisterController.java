@@ -6,6 +6,7 @@ import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.crm.common.ApiResultCode;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -102,16 +103,28 @@ public class RegisterController {
      * @param name 用户名
      * @return 结果
      */
+    @GetMapping("register/searchName")
     public ApiResult<Void> searchName(String name) {
+        boolean state = false;
         if (StrUtil.isNotBlank(name)) {
-            registerService.searchAccount(name);
+            state = registerService.searchUsername(name);
         }
-
+        if (!state) {
+            return ApiResult.failed(ApiResultCode.USER_ACCOUNT_REPEAT);
+        }
         return ApiResult.success();
     }
 
+    @GetMapping("register/searchAccount")
     public ApiResult<Boolean> searchAccount(String account) {
-        return ApiResult.success(registerService.searchAccount(account));
+        boolean state = false;
+        if (StrUtil.isNotBlank(account)) {
+            state = registerService.searchAccount(account);
+        }
+        if (!state) {
+            return ApiResult.failed(ApiResultCode.USER_ACCOUNT_REPEAT);
+        }
+        return ApiResult.success();
     }
 
 }

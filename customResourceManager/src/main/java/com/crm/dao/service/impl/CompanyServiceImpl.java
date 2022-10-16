@@ -17,6 +17,7 @@ import com.crm.dao.mapper.CompanyMapper;
 import com.crm.dao.service.ICompanyService;
 
 import cn.hutool.core.util.ObjectUtil;
+import cn.hutool.core.util.StrUtil;
 
 /**
  * <p>
@@ -46,6 +47,12 @@ public class CompanyServiceImpl extends ServiceImpl<CompanyMapper, Company> impl
     }
 
     @Override
+    public Company findByCompanyId(String companyId) {
+        return companyMapper
+            .selectOne(lambdaQuery().eq(StrUtil.isNotBlank(companyId), Company::getCompanyId, companyId));
+    }
+
+    @Override
     public void create(Company company) {
         // 判断是否登录
         PersonContext personContext = PersonContextHolder.getPersonContext();
@@ -56,5 +63,17 @@ public class CompanyServiceImpl extends ServiceImpl<CompanyMapper, Company> impl
         company.setCreatedTime(LocalDateTime.now());
         company.setCreatedBy(accountId);
         companyMapper.insert(company);
+    }
+
+    @Override
+    public void delete(Company company) {
+        PersonContext personContext = PersonContextHolder.getPersonContext();
+        if (ObjectUtil.isNull(personContext)) {
+            return;
+        }
+        company.setState(CommonConstant.ARCHIVE);
+        company.setUpdatedTime(LocalDateTime.now());
+        company.setUpdatedBy(personContext.getAccountId());
+        companyMapper.updateById(company);
     }
 }

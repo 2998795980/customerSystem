@@ -23,9 +23,25 @@ public interface ICompanyService extends IService<Company> {
     List<Company> findAll();
 
     /**
+     * 通过公司id查询公司
+     * 
+     * @param companyId
+     * @return
+     */
+    Company findByCompanyId(String companyId);
+
+    /**
      * 创建客户公司
      * 
      * @param company
      */
     void create(Company company);
+
+    /**
+     * 删除客户公司
+     * 
+     * @param company
+     */
+    void delete(Company company);
+
 }

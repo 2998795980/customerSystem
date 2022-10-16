@@ -1,11 +1,12 @@
 package com.crm.controller.company;
 
+import javax.validation.constraints.NotBlank;
+
 import org.springframework.beans.BeanUtils;
 
 import com.crm.dao.entity.Company;
 
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
+import cn.hutool.core.util.ObjectUtil;
 
 public class CompanyForm {
 
@@ -15,7 +16,7 @@ public class CompanyForm {
     @NotBlank(message = "公司名称不能为空")
     private String companyName;
 
-    @NotBlank(message = "公司地址不能为空" )
+    @NotBlank(message = "公司地址不能为空")
     private String address;
 
     public CompanyForm(String companyId, String companyName, String address) {
@@ -55,6 +56,9 @@ public class CompanyForm {
     }
 
     public Company copyCompany(Company company) {
+        if (ObjectUtil.isNull(company)) {
+            company = new Company();
+        }
         BeanUtils.copyProperties(this, company);
         return company;
     }

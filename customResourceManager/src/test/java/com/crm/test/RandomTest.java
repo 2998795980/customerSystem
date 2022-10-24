@@ -3,6 +3,7 @@ package com.crm.test;
 
 import cn.hutool.core.date.DateUtil;
 import cn.hutool.core.date.LocalDateTimeUtil;
+import cn.hutool.core.util.ReUtil;
 import org.junit.jupiter.api.Test;
 
 import java.time.LocalDateTime;
@@ -25,11 +26,8 @@ public class RandomTest {
 
     @Test
     public void dataTime() {
-        System.out.println(DateUtil.date(System.currentTimeMillis()).toString());
-
-        System.out.println(DateUtil.now());
-//        System.out.println(LocalDateTime.now().format("yyyy-MM-dd HH:mm:ss"));
-
-//        System.out.println(LocalDateTimeUtil);
+        String str = "12313";
+        boolean match = ReUtil.isMatch("[0123456789]+", str);
+        System.out.println(match);
     }
 }

@@ -33,7 +33,7 @@ public class Account implements Serializable {
     private String account;
 
     /**
-     * 密码
+     * 密码 使用HuTool sha1加密
      */
     private String password;
 

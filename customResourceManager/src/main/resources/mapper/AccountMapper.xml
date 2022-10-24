@@ -2,4 +2,24 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.crm.dao.mapper.AccountMapper">
 
+    <select id="getRoleIdByAccountId" resultType="integer">
+        select role_id from account_role where #{accountID} = account_id;
+    </select>
+
+    <select id="getPermissionsIdByRoleId" resultType="java.lang.Integer">
+        select permissions_id from role_permissions where #{roleId} = role_id;
+    </select>
+
+    <select id="getRoleByRoleId" resultType="com.crm.bean.Role">
+        select * from role where #{roleId} = id;
+    </select>
+
+    <select id="getPermissionsByPermissionId" resultType="com.crm.bean.Permissions">
+        select * from permissions where id in
+        <foreach collection="permissionsId" item="id" open="(" close=")" separator=",">
+            #{id}
+        </foreach>
+    </select>
+
+
 </mapper>
